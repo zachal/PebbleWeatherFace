@@ -1,0 +1,91 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "Pebble",
+    "longName": "Weather Watchface",
+    "projectType": "pebblejs",
+    "resources": {
+        "media": [
+            {
+                "file": "images/menu_icon.png",
+                "menuIcon": true,
+                "name": "IMAGE_MENU_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/logo_splash.png",
+                "name": "IMAGE_LOGO_SPLASH",
+                "type": "png"
+            },
+            {
+                "file": "images/tile_splash.png",
+                "name": "IMAGE_TILE_SPLASH",
+                "type": "png"
+            },
+            {
+                "file": "fonts/UbuntuMono-Regular.ttf",
+                "name": "MONO_FONT_14",
+                "type": "font"
+            },
+            {
+                "file": "images/nt_partlycloudy.png",
+                "name": "IMAGES_NT_PARTLYCLOUDY_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/nt_clear.png",
+                "name": "IMAGES_NT_CLEAR_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/mostlysunny.png",
+                "name": "IMAGES_MOSTLYSUNNY_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/fog.png",
+                "name": "IMAGES_FOG_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/cloudy.png",
+                "name": "IMAGES_CLOUDY_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/clear.png",
+                "name": "IMAGES_CLEAR_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/chancetstorms.png",
+                "name": "IMAGES_CHANCETSTORMS_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/chancesleet.png",
+                "name": "IMAGES_CHANCESLEET_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/chancerain.png",
+                "name": "IMAGES_CHANCERAIN_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/chanceflurries.png",
+                "name": "IMAGES_CHANCEFLURRIES_PNG",
+                "type": "png"
+            }
+        ]
+    },
+    "shortName": "WWatch",
+    "uuid": "6cdd81df-872e-4ff9-b2ee-d993048518c3",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
