@@ -2,18 +2,41 @@ var UI = require('ui');
 var ajax = require('ajax');
 
 // Create a Card with title and subtitle
-var card = new UI.Card({
-  title:'Weather',
-  subtitle:'Fetching...'
-});
+var Vector2 = require('vector2');
+var splashWindow = new UI.Window({clear: true});
+splashWindow.show();
+var cardtitle = new UI.Text({ text:'Weather:', textAlign:'center', font:'GOTHIC_28_BOLD', color:'black',  position: new Vector2(0,0), size: new Vector2(144, 50)});
+var cardsubtitle = new UI.Text({ text:'...Fetching...', textAlign:'center', font:'GOTHIC_24_BOLD', color:'black',  position: new Vector2(0, 40), size: new Vector2(144, 100)});
+var cardsubtitle2 = new UI.Text({ text:'', textAlign:'center', font:'GOTHIC_24_BOLD', color:'black',  position: new Vector2(0, 100), size: new Vector2(144, 100)});
+var cardbody = new UI.Text({ text:'', textAlign:'center', font:'GOTHIC_24', color:'black',  position: new Vector2(0, 125), size: new Vector2(144, 25)});
+var rect = new UI.Rect({ size: new Vector2(144, 168) });
 
+splashWindow.add(rect);
+var image = new UI.Image({position: new Vector2(62, 80), size: new Vector2(20, 20)});
+		splashWindow.add(image);
+var cardicon = "";
+var TT = new UI.TimeText({ text:'%I:%M', textAlign:'center', font:'BITHAM_42_BOLD', color:'black',  position: new Vector2(0,5), size: new Vector2(144, 168)});
+var DT = new UI.TimeText({ text:'%m/%d', textAlign:'center', font:'GOTHIC_14_BOLD', color:'black',  position: new Vector2(5,0), size: new Vector2(72, 168)});
 // Display the Card
-card.show();
-
+splashWindow.add(DT);
+splashWindow.add(TT);
+splashWindow.add(cardtitle);
+splashWindow.add(cardsubtitle);
+splashWindow.add(cardsubtitle2);
+splashWindow.add(cardbody);
 // Construct URL
 var cityName = '07079';
 var URL = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName;
+var coordinates = "";
+navigator.geolocation.getCurrentPosition(
 
+        // Location Success
+        function (position) {
+
+          // Extract the coordinates.
+          coordinates = position.coords;
+					URL = 'http://api.openweathermap.org/data/2.5/weather?lat=' + coordinates.latitude + '?long=' + coordinates.longitude;
+          });
 // Make the request
 ajax(
   {
@@ -22,6 +45,7 @@ ajax(
   },
   function(data) {
     // Success!
+		splashWindow.remove(cardtitle);
     console.log("Successfully fetched weather data!");
 
     // Extract data
@@ -36,65 +60,68 @@ ajax(
 
 		
     // Show to user
-    card.subtitle(location + ", " + temperature);
-    card.body(description);
+		cardsubtitle.text(" " + temperature + "," );
+		cardsubtitle2.text(description);
+		cardbody.text("in " + location);
+    
 				switch(icon){
 			case "01d":
-				card.icon = "images/clear.png";
+				cardicon = "images/clear.png";
 				break;
 			case "01n":
-				card.icon = "images/nt_clear.png";
+				cardicon = "images/nt_clear.png";
 				break;
 			case "02d":
-				card.icon = "images/mostlysunny.png";
+				cardicon = "images/mostlysunny.png";
 				break;
 			case "02n":
-				card.icon = "images/nt_partlycloudy.png";
+				cardicon = "images/nt_partlycloudy.png";
 				break;
 			case "03d":
-				card.icon = "images/cloudy.png";
+				cardicon = "images/cloudy.png";
 				break;
 			case "03n":
-				card.icon = "images/cloudy.png";
+				cardicon = "images/cloudy.png";
 				break;
 			case "04d":
-				card.icon = "images/cloudy.png";
+				cardicon = "images/cloudy.png";
 				break;
 			case "04n":
-				card.icon = "images/cloudy.png";
+				cardicon = "images/cloudy.png";
 				break;
 			case "09d":
-				card.icon = "images/chancerain.png";
+				cardicon = "images/chancerain.png";
 				break;
 			case "09n":
-				card.icon = "images/chancerain.png";
+				cardicon = "images/chancerain.png";
 				break;
 			case "10d":
-				card.icon = "images/chancerain.png";
+				cardicon = "images/chancerain.png";
 				break;
 			case "10n":
-				card.icon = "images/chancerain.png";
+				cardicon = "images/chancerain.png";
 				break;
 			case "11d":
-				card.icon = "images/chancetstorms.png";
+				cardicon = "images/chancetstorms.png";
 				break;
 			case "11n":
-				card.icon = "images/chancetstorms.png";
+				cardicon = "images/chancetstorms.png";
 				break;
 			case "13d":
-				card.icon = "images/chanceflurries.png";
+				cardicon = "images/chanceflurries.png";
 				break;	
 			case "13n":
-				card.icon = "images/chanceflurries.png";
+				cardicon = "images/chanceflurries.png";
 				break;	
 			case "50d":
-				card.icon = "images/fog.png";
+				cardicon = "images/fog.png";
 				break;	
 			case "50n":
-				card.icon = "images/fog.png";
+				cardicon = "images/fog.png";
 				break;	
 			
 		}
+		image.image(cardicon);
   },
   function(error) {
     // Failure!
