@@ -1,16 +1,16 @@
 {
     "appKeys": {},
     "capabilities": [
-        "location"
+        "location",
+        "configurable"
     ],
-    "companyName": "Pebble",
+    "companyName": "Zachal LLC.",
     "longName": "Weather Watchface",
     "projectType": "pebblejs",
     "resources": {
         "media": [
             {
                 "file": "images/menu_icon.png",
-                "menuIcon": true,
                 "name": "IMAGE_MENU_ICON",
                 "type": "png"
             },
@@ -56,6 +56,7 @@
             },
             {
                 "file": "images/clear.png",
+                "menuIcon": true,
                 "name": "IMAGES_CLEAR_PNG",
                 "type": "png"
             },
@@ -84,7 +85,7 @@
     "shortName": "WWatch",
     "uuid": "6cdd81df-872e-4ff9-b2ee-d993048518c3",
     "versionCode": 1,
-    "versionLabel": "1.0",
+    "versionLabel": "1.1",
     "watchapp": {
         "watchface": true
     }
